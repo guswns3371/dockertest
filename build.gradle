@@ -37,10 +37,11 @@ test {
 }
 
 docker {
+    println("docker start")
     name "${project.name}:${project.version}"
-    tag 'DockerHub', "guswns3371/gradle-docker-test5:${project.version}"
     files tasks.bootJar.outputs.files
-    buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
+    tag 'DockerHub', "guswns3371/gradle-docker-test6:${project.version}"
+//    buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
 }
 
 dockerRun {
