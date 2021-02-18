@@ -41,7 +41,7 @@ docker {
     name "${project.name}:${project.version}"
     files tasks.bootJar.outputs.files
     tag 'DockerHub', "guswns3371/gradle-docker-test:${project.version}"
-//    buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
+//     buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
 }
 
 dockerRun {
