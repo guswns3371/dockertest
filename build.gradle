@@ -38,7 +38,7 @@ test {
 
 docker {
     name "${project.name}:${project.version}"
-    tag 'DockerHub', "guswns3371/gradle-docker-example:${project.version}"
+    tag 'DockerHub', "guswns3371/gradle-docker-test:${project.version}"
     files tasks.bootJar.outputs.files
     buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
 }
