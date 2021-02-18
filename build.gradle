@@ -2,10 +2,13 @@ plugins {
     id 'org.springframework.boot' version '2.4.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'com.palantir.docker' version '0.25.0'
 }
-
+ext {
+    BUILD_VERSION = new Date().format("yyyyMMddHHmmss") // 빌드한 시간을 Image Tag 로 표시하기 위하여 사용한다.
+}
 group = 'com.example'
-//version = '0.0.1-SNAPSHOT'
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 configurations {
@@ -35,7 +38,9 @@ test {
     useJUnitPlatform()
 }
 
-bootJar {
-    // jar 파일명 지정하기
-    baseName("docker-test-sample")
+dockerPush {
+    name "guswns/jib-gradle-docker-case"
+    tags "${project.version}", "${BUILD_VERSION}"
+    files tasks.bootJar.outputs.files
+    buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
 }
