@@ -38,7 +38,7 @@ test {
     useJUnitPlatform()
 }
 
-dockerPush {
+docker {
     name "guswns/jib-gradle-docker-case"
     tags "${project.version}", "${BUILD_VERSION}"
     files tasks.bootJar.outputs.files
