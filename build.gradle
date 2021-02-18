@@ -36,6 +36,7 @@ test {
     useJUnitPlatform()
 }
 
+
 docker {
     println("docker start")
     name "${project.name}:${project.version}"
