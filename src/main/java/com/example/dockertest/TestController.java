@@ -24,4 +24,9 @@ public class TestController {
     public String hello() {
         return "docker hello";
     }
+
+    @GetMapping("/v2")
+    public String docker_jenkins() {
+        return "docker jenkins success!!";
+    }
 }
